@@ -16,21 +16,6 @@ public class StoppedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	//リソースを呼ぶ
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws IOException, ServletException {
-
-		//リクエストの引数（id）を持ってきて変数idに保持
-		//そのIDの人の編集を行う
-		int id = Integer.parseInt(request.getParameter("id"));
-		//セッションよりログインユーザーの情報を取得
-		User editUser = new UserService().getUser(id);
-		//ログインユーザー情報のidを元にDBからユーザー情報取得
-		request.setAttribute("editUser", editUser);
-		request.getRequestDispatcher("Top.jsp").forward(request, response);
-	}
-
-	@Override
 	//データに変更を加える
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {

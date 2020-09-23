@@ -105,7 +105,6 @@ public class SignUpServlet extends HttpServlet {
 		if (checkLoginId != 0) {
 			messages.add("すでに登録されたログインIDです");
 		}
-		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要
 		return messages.size() == 0;
 	}
 }

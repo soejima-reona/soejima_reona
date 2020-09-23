@@ -137,8 +137,6 @@ public class SettingsServlet extends HttpServlet {
 		} else if (nameformat.length() > 10) {
 			messages.add("名称は10文字以下で入力してください");
 		}
-
-		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要
 		//バリデーションに引っかからなかったら登録
 		//引っかかったら（sizeが1以上だったら）通らない
 		return messages.size() == 0;

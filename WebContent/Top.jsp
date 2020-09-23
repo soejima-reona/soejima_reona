@@ -47,13 +47,13 @@
 						<td>${user.name}</td>
 						<td>${user.branch}</td>
 						<td>${user.position}</td>
-						<td><c:if test="${user.stop == 0}">停止中</c:if> <c:if
-								test="${user.stop == 1}">稼働中</c:if></td>
+						<td><c:if test="${user.stop == 0}">停止中</c:if>
+						<c:if test="${user.stop == 1}">稼働中</c:if></td>
 
 						<td><center>
 								<form action="stopped" method="post">
-									<br /> <input name="id" value="${user.id}" id="id"
-										type="hidden" />
+									<br />
+									<input name="id" value="${user.id}" id="id" type="hidden" />
 
 									<c:if test="${user.stop == 0}">
 										<input class="btn1" value="復活" type="submit"
