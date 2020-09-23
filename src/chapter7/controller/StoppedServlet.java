@@ -20,7 +20,7 @@ public class StoppedServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		//青ユーザーのidを持ってきてピンクに保持
+		//リクエストの引数（id）を持ってきて変数idに保持
 		//そのIDの人の編集を行う
 		int id = Integer.parseInt(request.getParameter("id"));
 		//セッションよりログインユーザーの情報を取得

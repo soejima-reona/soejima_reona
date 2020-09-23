@@ -75,5 +75,4 @@ public class DBUtil {
 			throw new SQLRuntimeException(e);
 		}
 	}
-
 }

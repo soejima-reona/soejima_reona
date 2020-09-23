@@ -2,7 +2,6 @@ package chapter7.beans;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -33,14 +32,6 @@ public class User implements Serializable {
 
 	public void setPositionId(int positionId) {
 		this.positionId = positionId;
-	}
-
-	public User() {
-	}
-
-	public User(int id, String name) {
-		this.id = id;
-		this.name = name;
 	}
 
 	public int getId() {
@@ -117,11 +108,6 @@ public class User implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public List<User> User() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
 	}
 
 }

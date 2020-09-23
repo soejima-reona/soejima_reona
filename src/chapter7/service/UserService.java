@@ -12,6 +12,7 @@ import chapter7.utils.CipherUtil;
 
 public class UserService {
 
+	//新規登録
 	public void register(User user) {
 
 		Connection connection = null;
@@ -24,27 +25,6 @@ public class UserService {
 			userDao.insert(connection, user);
 
 			commit(connection);
-		} catch (RuntimeException e) {
-			rollback(connection);
-			throw e;
-		} catch (Error e) {
-			rollback(connection);
-			throw e;
-		} finally {
-			close(connection);
-		}
-	}
-
-	public List<User> getUser() {
-		Connection connection = null;
-		try {
-			connection = getConnection();
-
-			UserDao userDao = new UserDao();
-			List<User> ret = userDao.getUser(connection);
-
-			commit(connection);
-			return ret;
 		} catch (RuntimeException e) {
 			rollback(connection);
 			throw e;

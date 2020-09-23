@@ -30,7 +30,7 @@ public class SettingsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
-		//青ユーザーのidを持ってきてピンクに保持
+		//リクエスト引数（id）を持ってきて変数idに保持
 		//そのIDの人の編集を行う
 		int id = Integer.parseInt(request.getParameter("id"));
 		//セッションよりログインユーザーの情報を取得
@@ -65,12 +65,10 @@ public class SettingsServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String loginId = request.getParameter("login_id");
 		String name = request.getParameter("name");
-		String branch = request.getParameter("branches");
-		String position = request.getParameter("positions");
 		User editUser = getEditUser(request);
 
 		//バリデーションに引っかからなかったらUser.javaに送る
-		if (isValid(request, messages) == true) {
+		if (isValid(request, messages)) {
 			//登録できる状態だったら通る道
 			try {
 				new UserService().update(editUser);
@@ -92,8 +90,6 @@ public class SettingsServlet extends HttpServlet {
 			request.setAttribute("name", name);
 			request.setAttribute("branches", branches);
 			request.setAttribute("positions", positions);
-			//			request.setAttribute("branch", branch);
-			//			request.setAttribute("position", position);
 
 			request.getRequestDispatcher("setting.jsp").forward(request, response);
 		}
@@ -123,7 +119,7 @@ public class SettingsServlet extends HttpServlet {
 		int checkLoginId = new UserService().check(loginidformat);
 		String userLoginid = request.getParameter("userLoginid");
 
-		if (StringUtils.isEmpty(loginidformat) == true) {
+		if (StringUtils.isEmpty(loginidformat)) {
 			messages.add("ログインIDを入力してください");
 		} else if (!loginidformat.matches("^[a-zA-Z0-9]{6,20}$")) {
 			messages.add("ログインIDは6～20文字の半角英数字で入力してください");
@@ -136,7 +132,7 @@ public class SettingsServlet extends HttpServlet {
 		} else if (!passwordformat.equals(checkformat)) {
 			messages.add("パスワードが一致しません");
 		}
-		if (StringUtils.isEmpty(nameformat) == true) {
+		if (StringUtils.isEmpty(nameformat)) {
 			messages.add("名称を入力してください");
 		} else if (nameformat.length() > 10) {
 			messages.add("名称は10文字以下で入力してください");
@@ -145,10 +141,6 @@ public class SettingsServlet extends HttpServlet {
 		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要
 		//バリデーションに引っかからなかったら登録
 		//引っかかったら（sizeが1以上だったら）通らない
-		if (messages.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return messages.size() == 0;
 	}
 }

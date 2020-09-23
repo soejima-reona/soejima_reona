@@ -50,9 +50,9 @@ public class SignUpServlet extends HttpServlet {
 		String position = request.getParameter("positions");
 
 		//バリデーションに引っかからなかったらUser.javaに送る
-		if (isValid(request, messages) == true) {
+		if (isValid(request, messages)) {
 			User user = new User();
-			//青はjspのnameに合わせる、jspのVALUE値をUser.javaにセット（リクエストにjspからのデータが入っている）
+			//リクエストの引数値はjspのnameに合わせる、jspのVALUE値をUser.javaにセット（リクエストにjspからのデータが入っている）
 			user.setLoginId(request.getParameter("login_id"));
 			user.setPassword(request.getParameter("password"));
 			user.setName(request.getParameter("name"));
@@ -82,22 +82,22 @@ public class SignUpServlet extends HttpServlet {
 		String nameformat = request.getParameter("name");
 		int checkLoginId = new UserService().check(loginidformat);
 
-		if (StringUtils.isEmpty(loginidformat) == true) {
+		if (StringUtils.isEmpty(loginidformat)) {
 			messages.add("ログインIDを入力してください");
 		} else if (!loginidformat.matches("^[a-zA-Z0-9]{6,20}$")) {
 			messages.add("ログインIDは6～20文字の半角英数字で入力してください");
 		}
-		if (StringUtils.isEmpty(passwordformat) == true) {
+		if (StringUtils.isEmpty(passwordformat)) {
 			messages.add("パスワードを入力してください");
 		} else if (!passwordformat.matches("^[a-zA-Z0-9!-/:-@¥[-`{-~]]{6,20}$")) {
 			messages.add("パスワードは6～20文字の記号を含む半角英数字で入力してください");
 		}
-		if (StringUtils.isEmpty(checkformat) == true) {
+		if (StringUtils.isEmpty(checkformat)) {
 			messages.add("確認用パスワードを入力してください");
 		} else if (!passwordformat.equals(checkformat)) {
 			messages.add("パスワードが一致しません");
 		}
-		if (StringUtils.isEmpty(nameformat) == true) {
+		if (StringUtils.isEmpty(nameformat)) {
 			messages.add("名称を入力してください");
 		} else if (nameformat.length() > 10) {
 			messages.add("名称は10文字以下で入力してください");
@@ -106,11 +106,6 @@ public class SignUpServlet extends HttpServlet {
 			messages.add("すでに登録されたログインIDです");
 		}
 		// TODO アカウントが既に利用されていないか、メールアドレスが既に登録されていないかなどの確認も必要
-		if (messages.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return messages.size() == 0;
 	}
-
 }
