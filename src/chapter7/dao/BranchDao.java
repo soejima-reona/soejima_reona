@@ -19,7 +19,7 @@ public class BranchDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("SELECT ");
 			sql.append("branches.id as branch_id, ");
-			sql.append("branches.branch_name as branch_name ");
+			sql.append("branches.name as branch_name ");
 			sql.append("FROM branches ");
 
 			ps = connection.prepareStatement(sql.toString());

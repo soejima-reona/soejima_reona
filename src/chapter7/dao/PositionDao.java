@@ -19,7 +19,7 @@ public class PositionDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("SELECT ");
 			sql.append("positions.id as position_id, ");
-			sql.append("positions.position_name as position_name ");
+			sql.append("positions.name as position_name ");
 			sql.append("FROM positions ");
 
 			ps = connection.prepareStatement(sql.toString());

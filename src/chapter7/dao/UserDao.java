@@ -44,9 +44,9 @@ public class UserDao {
 				String password = rs.getString("password");
 				String name = rs.getString("name");
 				int branchId = rs.getInt("branch_id");
-				String branch = rs.getString("branch_name");
+				String branch = rs.getString("branches.name");
 				int positionId = rs.getInt("position_id");
-				String position = rs.getString("position_name");
+				String position = rs.getString("positions.name");
 				int stop = rs.getInt("status");
 				Timestamp createdDate = rs.getTimestamp("created_date");
 				Timestamp updatedDate = rs.getTimestamp("updated_date");
@@ -148,8 +148,8 @@ public class UserDao {
 				int id = rs.getInt("id");
 				String loginId = rs.getString("login_id");
 				String name = rs.getString("name");
-				String branchName = rs.getString("branch_name");
-				String positionName = rs.getString("position_name");
+				String branchName = rs.getString("branches.name");
+				String positionName = rs.getString("positions.name");
 				int stop = rs.getInt("status");
 
 				User message = new User();
