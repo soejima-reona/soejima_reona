@@ -19,6 +19,7 @@ public class UserDao {
 	public List<User> getUser(Connection connection) {
 		PreparedStatement ps = null;
 		try {
+
 			StringBuilder sql = new StringBuilder();
 			sql.append("SELECT * FROM users");
 
@@ -77,6 +78,7 @@ public class UserDao {
 
 		PreparedStatement ps = null;
 		try {
+			//↓文字列の連結・追加(StringBuilder)
 			StringBuilder sql = new StringBuilder();
 			sql.append("INSERT INTO users ( ");
 			sql.append(" login_id");

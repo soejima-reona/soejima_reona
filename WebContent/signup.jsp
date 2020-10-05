@@ -6,7 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="signup.js"></script>
 <title>ユーザー登録</title>
+<div class="feedback"></div>
 </head>
 <body>
 	<div class="main-contents">
@@ -20,16 +23,16 @@
 			</div>
 			<c:remove var="errorMessages" scope="session" />
 		</c:if>
-		<form action="signup" method="post">
+		<form action="signup" method="post" class="signup-form">
 			<br />
-			<label for="name">ログインID</label>
-			<input name="login_id" value="${login_id}" id="login_id" /><br />
+			<label for="login_id">ログインID</label>
+			<input name="login_id" value="${login_id}" id="login_id" type="text"/><br />
 			<label for="password">パスワード</label>
 			<input name="password" type="password" id="password" /><br />
 			<label for="check">パスワード（確認用）</label>
 			<input name="check" type="password" id="check" /><br />
 			<label for="name">名称</label>
-			<input name="name" value="${name}" id="name" /><br />
+			<input name="name" value="${name}" id="name" type="text"/><br />
 			<label for="branches">支店</label>
 			<select name="branches" id="branches" size="1">
 				<c:forEach var="br" items="${branches}">
@@ -54,10 +57,11 @@
 					</c:if>
 				</c:forEach>
 			</select><br /><br />
-			<input type="submit" value="新規登録" /><br />
+			<input type="submit" id="submit" value="新規登録" /><br />
 			<a href="./">戻る</a>
 		</form>
 		<div class="copyright">Copyright(c)SOEJIMA</div>
 	</div>
+    <script src="signup.js"></script>
 </body>
 </html>
